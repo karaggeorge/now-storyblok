@@ -50,9 +50,18 @@ const DeploymentTechs = async (options: RouteOptions) => {
   if (!selectedSpace) {
     return htm`
       <Box width="100%" height="100%" display="flex" justifyContent="center" alignItems="center">
-        <Box fontSize="20px" fontWeight="bold">←</Box>
-        <Box width="10px"/>
-        <H2>1. Please select a space from the list</H2>
+        <Box display="flex" flexDirection="column">
+          <Box display="flex" justifyContent="center">
+            <Box fontSize="20px" fontWeight="bold">←</Box>
+            <Box width="15px"/>
+            <H2>1. Please select a space from the list</H2>
+          </Box>
+          <Box display="flex" justifyContent="center">
+            Or create a new one
+            <Box width="5px"/>
+            <Link action="view/create-space/new">here</Link>
+          </Box>
+        </Box>
       </Box>
     `;
   }
