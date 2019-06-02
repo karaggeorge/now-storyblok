@@ -15,14 +15,14 @@ const CreateProjectView = async (options: RouteOptions) => {
 
   if (spaces.length === 0) {
     return htm`
-      <FsTitle>You have no spaces yet</FsTitle>
-      <FsSubtitle>Create your first space below</FsSubtitle>
+      <P>You have no spaces yet. Create your first space <Link action="view/create-space/new">here</Link></P>
     `;
   }
 
   spaces.sort((a: any, b: any) => a.name.localeCompare(b.name));
 
   return htm`
+    <Box>As easy as 1, 2, 3</Box>
     <Box display="flex" height="400px">
       <Box flex="2" height="100%" position="relative">
         <Box display="none">

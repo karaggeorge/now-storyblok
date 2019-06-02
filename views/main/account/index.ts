@@ -74,7 +74,6 @@ const AccountView = async (options: RouteOptions) => {
     </Fieldset>
     <BR/>
     <H1>Create a new project</H1>
-    <Box>As easy as 1, 2, 3</Box>
     ${createProject}
   `);
 };

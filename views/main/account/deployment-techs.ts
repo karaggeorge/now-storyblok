@@ -35,13 +35,9 @@ const Tech = ({name, image, tutorial, slug, selected}: {name: string; image: str
         }
       </Box>
     </Box>
-    ${
-      selected ? '' : htm`
-        <Link action=${`select-tech/${slug}`}>
-          <Box width="150px" height="165px" background="transparent" zIndex="2"/>
-        </Link>
-      `
-    }
+    <Link action=${`select-tech/${slug}`}>
+      <Box width="150px" height="165px" background="transparent" zIndex="2"/>
+    </Link>
   </Box>
 `;
 
@@ -80,7 +76,12 @@ const DeploymentTechs = async (options: RouteOptions) => {
           `)
         }
       </Box>
-      <H2>3. Deploy</H2>
+      ${
+        selectedTech ? htm`
+          <H2>3. Deploy</H2>
+          <Button highlight shadow action=${`deploy/${selectedTech}`}>Deploy</Button>
+        ` : ''
+      }
     </Box>
   `;
 }
