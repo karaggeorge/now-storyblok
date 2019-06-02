@@ -23,6 +23,9 @@ const ManageProject = async (options: RouteOptions) => {
 
   const {aliases} = await zeitClient.fetchAndThrow(`/v2/now/aliases?projectId=${projectId}${team ? `&teamId=${team.id}` : ''}`, {method: 'GET'}) as any;
   const alias = aliasId || (aliases.length && aliases[0].uid);
+  const domain = aliases.length && (
+    aliases.find((a: any) => `https://${a.alias}/` === space.domain) || aliases[0]
+  ).uid;
   const {story_published_hook: currentHook} = space;
 
   return htm`
@@ -69,6 +72,54 @@ const ManageProject = async (options: RouteOptions) => {
           </Box>
       </FsFooter>
     </Fieldset>
+    <Fieldset>
+      <FsContent>
+        <FsTitle>Add a default domain</FsTitle>
+        <FsSubtitle>
+          Adding one of the aliases as the default domain will allow you to
+          <Link href=${`https://app.storyblok.com/#!/me/spaces/${space.id}/stories`} target="_blank">edit</Link>
+          its content in place using Storyblok's Visual Editor
+        </FsSubtitle>
+        ${
+          aliases.length ? htm`
+            <Box display="flex" width="100%" alignItems="center">
+              <Select name="domain" value=${domain}>
+                ${
+                  aliases.map((alias: any) => htm`
+                    <Option value=${alias.uid} caption=${alias.alias}/>
+                  `)
+                }
+              </Select>
+            </Box>
+          ` : htm`
+            <P>You don't have any aliases to use</P>
+          `
+        }
+      </FsContent>
+      ${
+        aliases.length ? htm`
+          <FsFooter>
+            <Box paddingLeft="5px" paddingRight="5px" display="flex" width="100%" justifyContent="space-between" alignItems="center">
+              <P>${space.domain ? htm`Current default domain: <Link href=${space.domain} target="_blank">${space.domain}</Link>` : ''}</P>
+              <Button action="set-domain">${space.domain ? 'Replace' : 'Add'}</Button>
+            </Box>
+          </FsFooter>
+        ` : ''
+      }
+    </Fieldset>
+    ${
+      space.domain ? htm`
+        <Fieldset>
+          <FsContent>
+            <FsTitle>Default domain preview</FsTitle>
+            <FsSubtitle>Current preview of <Link href=${space.domain} target="_blank">${space.domain}</Link></FsSubtitle>
+            <Box width="100%" height="max-height" borderRadius="3px">
+              <Img src=${`https://storyblok.gkaragkiaouris.now.sh/preview.png?url=${encodeURIComponent(space.domain)}`} width="100%"/>
+            </Box>
+          </FsContent>
+        </Fieldset>
+      ` : ''
+    }
     <Fieldset>
       <FsContent>
         <FsTitle>Add a webhook</FsTitle>

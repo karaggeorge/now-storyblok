@@ -73,6 +73,20 @@ const spacesActions = (app: Integration) => {
     next();
   });
 
+  app.use('set-domain', async ({utils, zeitClient, payload}, next) => {
+    const {team} = payload;
+    const {token} = utils.store;
+
+    const client = new StoryblockClient(token);
+    const aliasId = utils.get('domain');
+    const {alias} = await zeitClient.fetchAndThrow(`/v2/now/aliases/${aliasId}${team ? `?teamId=${team.id}` : ''}`, {method: 'GET'}) as any;
+
+    const url = `https://${alias}/`;
+
+    await client.updateSpace(utils.projectStore.space.id, {domain: url});
+    next();
+  });
+
   app.use('create-space/:mode', async ({utils}, next) => {
     const {mode} = utils.params;
 
