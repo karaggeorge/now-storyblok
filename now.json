@@ -1,0 +1,16 @@
+{
+  "name": "storyblok",
+  "alias": ["now-storyblok.now.sh", "now.storyblok.tech"],
+  "version": 2,
+  "builds": [
+    { "src": "index.ts", "use": "@now/node" },
+    { "src": "chart.ts", "use": "@now/node", "config": { "maxLambdaSize": "50mb" } },
+    { "src": "static/*.svg", "use": "@now/static" },
+    { "src": "static/*.png", "use": "@now/optipng" }
+  ],
+  "routes": [
+    { "src": "/chart.png(.*)", "dest": "/chart.ts$1" },
+    { "src": "/static(.*)", "dest": "/static$1" },
+    { "src": "/(.*)", "dest": "/index.ts" }
+  ]
+}
