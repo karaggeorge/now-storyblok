@@ -2,7 +2,7 @@ import {RouteOptions} from 'now-integration';
 import {htm} from '@zeit/integration-utils';
 
 import StoryblokClient from '../../../utils/storyblok-client';
-import TECHS from 'utils/deploy-project';
+import TECHS from '../../../utils/deploy-project';
 
 const Tech = ({name, image, tutorial, slug, selected}: {name: string; image: string; tutorial: string, slug: string, selected: boolean}) => htm`
   <Box margin="0 10px" position="relative" zIndex="1">
@@ -69,7 +69,7 @@ const DeploymentTechs = async (options: RouteOptions) => {
       <H2>2. Select a framework</H2>
       <Box display="flex" justifyContent="center" marginBottom="30px">
         ${
-          Object.values(TECHS)​​.map((tech: any) => htm`
+          Object.values(TECHS).map((tech: any) => htm`
             <${Tech}
               name=${tech.name}
               image=${tech.image}
