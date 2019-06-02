@@ -21,7 +21,7 @@ const authActions = (app: Integration) => {
     utils.store.user = meta;
     utils.store.token = token;
     await utils.saveStore();
-    next();
+    return utils.renderRoute('view/external-login');
   });
 
   app.use('signup', async ({utils, payload}, next) => {
@@ -36,7 +36,7 @@ const authActions = (app: Integration) => {
     utils.store.user = meta;
     utils.store.token = token;
     await utils.saveStore();
-    next();
+    return utils.renderRoute('view/external-login');
   });
 
   app.use('reset-password', async ({utils, payload}) => {

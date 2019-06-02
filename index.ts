@@ -7,6 +7,7 @@ import spacesActions from './actions/spaces';
 import CreateSpaceView from './views/create-space';
 import deployActions from './actions/deploy';
 import DeployView from './views/deploy';
+import ExternalLoginView from './views/external-login';
 
 const app = new Integration({defaultRoute: MainView});
 
@@ -15,6 +16,7 @@ app.extend(authViews);
 app.extend(spacesActions);
 app.extend(deployActions);
 
+app.render('view/external-login', ExternalLoginView);
 app.render('view/create-space/:mode', CreateSpaceView);
 app.render('view/deploy', DeployView);
 
