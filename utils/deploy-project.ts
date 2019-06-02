@@ -1,6 +1,6 @@
 import got from 'got';
 import { ZeitClient } from '@zeit/integration-utils';
-import { NEXT_LOGO, GATSBY_LOGO } from '../constants';
+import { NEXT_LOGO, GATSBY_LOGO, NUXT_LOGO } from '../constants';
 
 const sha1 = require('sha1');
 
@@ -96,6 +96,14 @@ const TECHS: {[key: string]: Tech} = {
     repo: 'storyblok/react-next-boilerplate',
     ref: 'now-integration',
     slug: 'next'
+  },
+  nuxt: {
+    name: 'Vue.js/Nuxt.js',
+    image: NUXT_LOGO,
+    tutorial: 'https://www.storyblok.com/tp/nuxt-js-multilanguage-website-tutorial',
+    repo: 'storyblok/vue-nuxt-boilerplate',
+    ref: 'now-integration',
+    slug: 'nuxt'
   },
   gatsby: {
     name: 'React/Gatsby',
