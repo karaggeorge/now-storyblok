@@ -2,6 +2,7 @@ import {RouteOptions} from 'now-integration';
 import {htm} from '@zeit/integration-utils';
 
 import {LOGO} from '../../constants';
+import footer from '../footer';
 
 const applyMainLayout = ({utils}: RouteOptions, View: any) => {
   const {user: {email, userId}, token} = utils.store;
@@ -42,6 +43,7 @@ const applyMainLayout = ({utils}: RouteOptions, View: any) => {
           ${View}
         </Box>
       </Box>
+      ${footer}
     </Page>
   `;
 };
