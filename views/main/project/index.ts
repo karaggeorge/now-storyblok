@@ -9,7 +9,7 @@ const ConnectProject = async (options: RouteOptions) => {
   const query = options.utils.get('query') || '';
 
   return htm`
-    <H2>Connect your porject to a Storyblok space</H2>
+    <H2>Connect your project to a Storyblok space</H2>
     <Fieldset>
       <FsContent>
         ${await SpaceList(options)}
