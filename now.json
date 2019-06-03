@@ -7,6 +7,7 @@
     { "src": "chart.ts", "use": "@now/node", "config": { "maxLambdaSize": "50mb" } },
     { "src": "preview.ts", "use": "@now/node", "config": { "maxLambdaSize": "50mb" } },
     { "src": "static/*.svg", "use": "@now/static" },
+    { "src": "static/*.jpg", "use": "@now/static" },
     { "src": "static/*.png", "use": "@now/optipng" }
   ],
   "routes": [
