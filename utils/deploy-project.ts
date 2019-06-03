@@ -105,14 +105,14 @@ const TECHS: {[key: string]: Tech} = {
     ref: 'now-integration',
     slug: 'nuxt'
   },
-  gatsby: {
-    name: 'React/Gatsby',
-    image: GATSBY_LOGO,
-    tutorial: 'https://www.storyblok.com/tp/gatsby-multilanguage-website-tutorial',
-    repo: 'karaggeorge/gatsby-storyblok-boilerplate',
-    ref: 'now-integration',
-    slug: 'gatsby'
-  }
+  // gatsby: {
+  //   name: 'React/Gatsby',
+  //   image: GATSBY_LOGO,
+  //   tutorial: 'https://www.storyblok.com/tp/gatsby-multilanguage-website-tutorial',
+  //   repo: 'karaggeorge/gatsby-storyblok-boilerplate',
+  //   ref: 'now-integration',
+  //   slug: 'gatsby'
+  // }
 };
 
 export const deployTech = (slug: string, zeitClient: ZeitClient, token: string) => {

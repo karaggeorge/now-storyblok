@@ -5,7 +5,7 @@ import StoryblokClient from '../../../utils/storyblok-client';
 import TECHS from '../../../utils/deploy-project';
 
 const Tech = ({name, image, tutorial, slug, selected}: {name: string; image: string; tutorial: string, slug: string, selected: boolean}) => htm`
-  <Box margin="0 10px" position="relative" zIndex="1">
+  <Box margin="0 20px" position="relative" zIndex="1">
     <Box
       padding="10px"
       display="flex"
